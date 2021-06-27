@@ -1,7 +1,18 @@
-import { render } from '@testing-library/react';
+import { booksContextRenderer } from '../../testHelpers';
+import { generateBooks } from '../../testHelpers/mockData';
 import Home from './';
 
-test('runs a test', () => {
-  render(<Home />);
-  expect(1).toBeTruthy();
+describe('Home', () => {
+  it("should render 'loading...' when no books have been provided", () => {
+    const { getByText } = booksContextRenderer(undefined, <Home />)
+    expect(getByText('Loading...')).toBeTruthy();
+  });
+
+  it('should render the correct numnber of books', () => {
+    const books = generateBooks(4);
+    const { getByText } = booksContextRenderer(books, <Home />);
+    books.forEach(book => {
+      expect(getByText(book.title)).toBeTruthy();
+    });
+  })
 });

@@ -16,7 +16,7 @@ const BooksBySameAuthor = ({ books, bookId, author }: IBooksBySameAuthorProps): 
             <>
                 <h4>Other books by the same author:</h4>
                 <ul>{booksBySameAuthor.map(book => (
-                    <Link to={`${ERoutes.BOOK}/${book.id}`}><li>{book.title}</li></Link>
+                    <Link key={book.id} to={`${ERoutes.BOOK}/${book.id}`}><li>{book.title}</li></Link>
                 ))}</ul>
             </>
         );

@@ -15,7 +15,7 @@ const BookCard = ({ book }: IBookCardProps): JSX.Element => {
             <div className={styles.bookInfo}>
                 <h3>{book.title}</h3>
                 <p>({book.author})</p>
-                <Link to={`${ERoutes.BOOK}/${book.id}`} target='_blank' className={styles.moreInfo}>
+                <Link to={`${ERoutes.BOOK}/${book.id}`} target='_blank' className={styles.moreInfo} data-testid='link'>
                     <p className={styles.moreInfo}>
                         <Icon  className={styles.moreInfoIcon} icon='info-sign' />
                         Click for more info...
